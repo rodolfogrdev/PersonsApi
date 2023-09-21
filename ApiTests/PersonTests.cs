@@ -39,7 +39,7 @@ namespace ApiTests
             var persons = JsonConvert.DeserializeObject<List<Person>>(result);
             var numberOfPersonsBeforeSaving = persons?.Count;
 
-            var jsonPerson = JsonConvert.SerializeObject(new Person { Name = "Test" });
+            var jsonPerson = JsonConvert.SerializeObject(new Person { Name = "Test", Address = "testAddress", PhoneNumber= "1234565789", EmailAddress = "mail@domain.com" });
 
             var httpContent = new StringContent(jsonPerson, System.Text.Encoding.UTF8, "application/json");
 
@@ -51,6 +51,36 @@ namespace ApiTests
             var numberOfPersonsAfterSaving = afterSavePersons?.Count;
 
             Assert.True(numberOfPersonsAfterSaving -1 == numberOfPersonsBeforeSaving);
+        }
+
+        [Fact]
+        public async Task PersonUpdate_UpdatesAPerson()
+        {
+            var response = await _httpClient.GetAsync("person");
+            var result = await response.Content.ReadAsStringAsync();
+            var persons = JsonConvert.DeserializeObject<List<Person>>(result);
+            var numberOfPersonsBeforeSaving = persons?.Count;
+
+            var jsonPerson = JsonConvert.SerializeObject(new Person { Name = "Test", Address = "testAddress", PhoneNumber = "1234565789", EmailAddress = "mail@domain.com" });
+
+            var httpContent = new StringContent(jsonPerson, System.Text.Encoding.UTF8, "application/json");
+
+            await _httpClient.PostAsync("person", httpContent);
+
+            var afterSaveResponse = await _httpClient.GetAsync("person");
+            var afterSaveResult = await afterSaveResponse.Content.ReadAsStringAsync();
+            var afterSavePersons = JsonConvert.DeserializeObject<List<Person>>(afterSaveResult);
+
+            var newlyAddedPersonId = (int)(afterSavePersons?.FirstOrDefault().Id);
+            var jsonUpdatePerson = JsonConvert.SerializeObject(new Person {Id = newlyAddedPersonId, Name = "Test2" });
+            var httpUpdateContent = new StringContent(jsonUpdatePerson, System.Text.Encoding.UTF8, "application/json");
+
+            await _httpClient.PutAsync("person", httpUpdateContent);
+            var responseAfterUpdate = await _httpClient.GetAsync("person/" + newlyAddedPersonId);
+            var resultAfterUpdate = await responseAfterUpdate.Content.ReadAsStringAsync();
+            var newPerson = JsonConvert.DeserializeObject<Person>(resultAfterUpdate);
+
+            Assert.True(newPerson?.Name == "test2");
         }
 
         [Fact]
@@ -70,5 +100,6 @@ namespace ApiTests
 
             Assert.Contains("cannot be longer than 150 characters", result);
         }
+        
     }
 }
