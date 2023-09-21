@@ -1,25 +1,26 @@
+using Business.Helpers;
+using Business.Providers;
+using DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Add Business providers
+builder.Services.AddScoped<IDatabaseManager, DatabaseManager>();
+builder.Services.AddScoped<IGenericHelper, GenericHelper>();
+builder.Services.AddScoped<IPersonProvider, PersonProvider>();
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
+public partial class Program
+{
+}

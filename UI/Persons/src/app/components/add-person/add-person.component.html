@@ -1,0 +1,57 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="person.name"
+            name="name"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="address">Dirección</label>
+          <input
+            class="form-control"
+            id="address"
+            required
+            [(ngModel)]="person.address"
+            name="address"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Número telefónico</label>
+            <input
+              class="form-control"
+              id="phoneNumber"
+              required
+              [(ngModel)]="person.phoneNumber"
+              name="phoneNumber"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="emailAddress">Correo Electrónico</label>
+            <input
+              class="form-control"
+              id="emailAddress"
+              required
+              [(ngModel)]="person.emailAddress"
+              name="emailAddress"
+            />
+          </div>
+  
+        <button (click)="savePerson()" class="btn btn-success">Guardar</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>La persona ha sido guardada satisfactoriamente.</h4>
+        <button class="btn btn-success" (click)="newPerson()">Nuevo</button>
+      </div>
+    </div>
+  </div>

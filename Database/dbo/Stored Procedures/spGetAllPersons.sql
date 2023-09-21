@@ -3,6 +3,7 @@ AS
 BEGIN
 
     SELECT
+    Id,
 	[Name],
     [Address],
     [PhoneNumber],

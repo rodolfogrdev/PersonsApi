@@ -1,0 +1,67 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by name"
+          [(ngModel)]="name"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Persons List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let person of persons; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActivePerson(person, i)"
+        >
+          {{ person.name }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPersons()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentPerson.id">
+        <h4>Person</h4>
+        <div>
+          <label><strong>Nombre:</strong></label> {{ currentPerson.name }}
+        </div>
+        <div>
+          <label><strong>Dirección:</strong></label>
+          {{ currentPerson.address }}
+        </div>
+        <div>
+            <label><strong>Teléfono:</strong></label>
+            {{ currentPerson.phoneNumber }}
+        </div>
+        <div>
+            <label><strong>Correo electrónico:</strong></label>
+            {{ currentPerson.emailAddress }}
+          </div>
+  
+        <a class="badge badge-warning" routerLink="/persons/{{ currentPerson.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentPerson">
+        <br />
+        <p>Por favor seleccione una Persona...</p>
+      </div>
+    </div>
+  </div>

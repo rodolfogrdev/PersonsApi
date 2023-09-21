@@ -1,9 +1,12 @@
 ﻿using Business.Contracts;
 using Business.Providers;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PersonsApi.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PersonsController : ControllerBase
     {
         private readonly IPersonProvider _personProvider;
