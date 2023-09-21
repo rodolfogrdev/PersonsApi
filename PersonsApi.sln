@@ -5,6 +5,12 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonsApi", "PersonsApi.csproj", "{88BB57A3-6F85-4E48-9645-2848E086E410}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{E50C6B67-5924-4406-B2C0-F018DB2A6AF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{4A8127AF-1A6C-48AF-A14B-99E7F8CABA24}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{7D613D07-1414-43CF-AF34-2D3BB25CE5DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,20 @@ Global
 		{88BB57A3-6F85-4E48-9645-2848E086E410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88BB57A3-6F85-4E48-9645-2848E086E410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88BB57A3-6F85-4E48-9645-2848E086E410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E50C6B67-5924-4406-B2C0-F018DB2A6AF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E50C6B67-5924-4406-B2C0-F018DB2A6AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E50C6B67-5924-4406-B2C0-F018DB2A6AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E50C6B67-5924-4406-B2C0-F018DB2A6AF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A8127AF-1A6C-48AF-A14B-99E7F8CABA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8127AF-1A6C-48AF-A14B-99E7F8CABA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8127AF-1A6C-48AF-A14B-99E7F8CABA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8127AF-1A6C-48AF-A14B-99E7F8CABA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D613D07-1414-43CF-AF34-2D3BB25CE5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D613D07-1414-43CF-AF34-2D3BB25CE5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D613D07-1414-43CF-AF34-2D3BB25CE5DB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7D613D07-1414-43CF-AF34-2D3BB25CE5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D613D07-1414-43CF-AF34-2D3BB25CE5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D613D07-1414-43CF-AF34-2D3BB25CE5DB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
